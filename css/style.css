@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
+
+@font-face {
+  font-family: "Bitter";
+  src: url(../assets/static/Bitter-Regular.ttf);
+}
+
+/* 
+* {
+  margin: 0;
+  padding : 0;
+  border : 2px solide red (permet de visualisez TOUS les éléments)
+*/
+
+body {
+  font-family: "Bitter";
+  background: url(../img/breaking-bad.jpg) center/cover;
+  /*  "vh (viexport heigt)" correspond à la taille de l'écran de l'utilisteur 
+  min-height: 100vh;*/
+  /* "vW (viewport width) permet de faire du responsive nativement : la taille du texte s'adapte à lataille de l'écran */
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav li {
+  list-style: none;
+}
+
+h1 {
+  letter-spacing: 3px;
+  color: rgb(5, 5, 57);
+  font-size: 8vw;
+  text-align: center;
+  text-shadow: 3px 2px 6px #ae1c28;
+  font-family: "oswald", sans-serif;
+}
+
+main {
+  min-height: 500px;
+  width: 90%;
+  background: rgba(0, 0, 255, 0.161);
+  /* centrer une boite */
+  margin: 0 auto;
+  border-radius: 40px 40px 0 0;
+  box-shadow: 1px -6px 20px 3px #63a197;
+  padding: 15px;
+  color: #24dc1b;
+}
+
+.flexbox h2 {
+  display: flex;
+  justify-content: center;
+}
+.flexbox,
+.grid,
+.absolute {
+  border: 2px dashed skyblue;
+  border-radius: 15px;
+  padding: 10px;
+  margin-top: 20px;
+  min-height: 150px;
+}
+
+.flexbox ul {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.flexbox li {
+  list-style: none;
+  height: 160px;
+  width: 160px;
+  margin: 10px;
+  background: #aee0e751;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* GRID */
+.grid-container {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.grid img {
+  width: 80%;
+  margin: 12px auto;
+  display: block;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "i1 12"
+    "ta ta"
+    "vi bt";
+}
+
+input {
+  height: 25px;
+}
+
+input,
+textarea {
+  margin: 5px;
+  border: 1px solid darkblue;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.1rem;
+  font-family: "Bitter ";
+}
+
+textarea {
+  grid-area: ta;
+  height: 90px;
+  resize: none;
+}
+
+#btn-submit {
+  grid-area: bt;
+  height: 55px;
+  cursor: pointer;
+  background: rgb(26, 76, 99);
+  transition: 0.2s;
+}
+
+#btn-submit:hover {
+  background: #63a197;
+  color: white;
+}
+
+/* ABSOLUTE */
+/* Il faut mettre une position relative au parent pour contraindre l'élément en absolute dans ses frontières */
+
+.absolute {
+  position: relative;
+}
+
+#circle1 {
+  height: 60px;
+  width: 60px;
+  background: skyblue;
+  position: absolute;
+  border-radius: 150px;
+  top: 0;
+  left: 190px;
+}
+
+#circle2 {
+  height: 40px;
+  width: 40px;
+  border-radius: 150px;
+  background: skyblue;
+  position: absolute;
+  left: 50%;
+  /* transform : translateX : poour centrer un élément en absolute (on prend en compte le centre et non plus le dord de l'objet */
+  transform: translateX(-50%);
+  top: 100px;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 855px) {
+  .grid-container {
+    display: block;
+  }
+  .grid img {
+    width: 25%;
+  }
+}
+@media screen and (max-width: 620px) {
+  .flexbox ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  form {
+    grid-template-columns: 1fr;
+    grid-row: 1fr;
+    grid-template-areas:
+      "i1"
+      "i2"
+      "ta"
+      "bt";
+  }
+  input,
+  textarea {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 340px) {
+}
